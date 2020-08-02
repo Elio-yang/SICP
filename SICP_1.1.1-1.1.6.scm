@@ -63,9 +63,34 @@ SQUARE
 ;lambda表达式
 ;;-------------------------------------------------------------
 ;;Exercise 1
-(define exp
-  (lambda x n)
-  (cond ( (= n 0) 1)
-        (else
-         (* x ( exp x ( - n 1))))))
-(exp 2 5)
+(define (<= x y)
+  (not (> x y)))
+(define (d<= x y z)
+  (and (<= x y)(<= y z)))
+(define (sumofmax x y z)
+  (cond ((d<= x y z)( + y z))
+        ((d<= x z y)( + z y))
+        ((d<= y x z)( + x z))
+        ((d<= y z x)( + z x))
+        ((d<= z x y)( + x y))
+        ((d<= z y x)( + y x))))
+(sumofmax 1 4 7)
+(sumofmax 9 3 6)
+;-------------------------------------------------------------
+;;Exercise 2
+(define (a-plus-abs-b a b)
+  ((if(> b 0) + -) a b))
+(a-plus-abs-b 2 -5)
+;-------------------------------------------------------------
+;;Exercise 3
+;(define (p) (p))
+;(define (test x y)
+;  (if (= x 0)
+;      0
+;      y))
+;(test 0 (p))
+;对(p)的调用会陷入无限递归，最终只能手动杀死进程。
+;因而采用的是应用序，会先求值
+;若采用正则序，则在需要的时候才求值，因而会输出0
+
+
