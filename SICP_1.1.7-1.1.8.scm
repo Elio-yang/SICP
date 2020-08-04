@@ -45,7 +45,8 @@
     guess
     (cuberoot (improvecube guess x) x)))
 
-(define (trisqrt x)
+(define (cube-root x)
   (cuberoot 1.0 x))
 
-(display (trisqrt 8))
+(display (cube-root 8))
+;;-----------------------------------------------------------
